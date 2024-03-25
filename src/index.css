@@ -50,6 +50,8 @@ body {
   font-weight: 300;
   background-color: #f0f0f0;
   cursor: pointer;
+
+  animation: open 1.2s ease-in;
 }
 
 .form .input-amount {
@@ -89,6 +91,9 @@ body {
   font-size: 2rem;
   font-weight: 300;
   color: #333;
+  perspective: 800px;
+
+  animation: rotate 1.2s ease-in-out;
 }
 
 .warning-wrapper {
@@ -109,7 +114,7 @@ body {
   text-align: center;
   opacity: 1;
 
-  animation: blurIn 0.15s ease-in;
+  animation: blurIn 0.15s ease-in-out;
 }
 
 .blue-wrapper {
@@ -135,6 +140,30 @@ body {
     opacity: 1;
     transform: scale(1);
     filter: brightness(1);
+  }
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    opacity: 0;
+    transform: rotateX(180deg);
+  }
+
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
   }
 }
 

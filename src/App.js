@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 
 export default function App() {
   const [amount, setAmount] = useState("");
-  const [from, setFrom] = useState("USD");
-  const [to, setTo] = useState("EUR");
+  const [from, setFrom] = useState("EUR");
+  const [to, setTo] = useState("USD");
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -151,20 +151,45 @@ function Form({
 }
 
 function Result({ amount, from, to, output, isLoading }) {
+  let resultText;
+
+  if (isLoading) {
+    resultText = <p className="loading">Loading...</p>;
+  } else if (from === to && amount === "") {
+    resultText = `Need a currency to convert!`;
+  } else if (amount === 0 || amount === "") {
+    resultText = `From ${from} to ${to}`;
+  } else {
+    resultText = (
+      <p className="">
+        {amount} {from} is equal{" "}
+        <span className="blue-wrapper">
+          {output} {to}
+        </span>
+      </p>
+    );
+  }
+
   return (
-    <div className={amount ? `result-box` : `result-box off`}>
-      {isLoading ? (
-        <p className="loading">Loading...</p>
-      ) : amount === 0 || amount === "" ? (
-        `From ${from} to ${to}`
-      ) : (
-        <p className="">
-          {amount} {from} is equal{" "}
-          <span className="blue-wrapper">
-            {output} {to}
-          </span>
-        </p>
-      )}
-    </div>
+    <div className={amount ? `result-box` : `result-box off`}>{resultText}</div>
   );
 }
+
+// function Result({ amount, from, to, output, isLoading }) {
+//   return (
+//     <div className={amount ? `result-box` : `result-box off`}>
+//       {isLoading ? (
+//         <p className="loading">Loading...</p>
+//       ) : amount === 0 || amount === "" ? (
+//         `From ${from} to ${to}`
+//       ) : (
+//         <p className="">
+//           {amount} {from} is equal{" "}
+//           <span className="blue-wrapper">
+//             {output} {to}
+//           </span>
+//         </p>
+//       )}
+//     </div>
+//   );
+// }

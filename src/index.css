@@ -161,8 +161,12 @@ body {
     transform: rotateX(180deg);
   }
 
+  70% {
+    transform: translateY(0.5rem);
+  }
+
   100% {
-    transform: rotateX(0);
+    transform: rotateX(0) translateY(0);
     opacity: 1;
   }
 }

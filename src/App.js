@@ -9,10 +9,12 @@ export default function App() {
 
   function handleChangeFrom(e) {
     setFrom(e.target.value);
+    setAmount("");
   }
 
   function handleChangeTo(e) {
     setTo(e.target.value);
+    setAmount("");
   }
 
   useEffect(

@@ -19,7 +19,6 @@ export default function App() {
 
   useEffect(
     function () {
-      setOutput("");
       const delayFetch = setTimeout(() => {
         async function fetchCurrency() {
           setIsLoading(true);
@@ -152,19 +151,15 @@ function Form({
 }
 
 function Result({ amount, from, to, output, isLoading }) {
-  if (!output) {
-    return null;
-  }
-
   return (
-    <div className="result-box">
+    <div className={amount ? `result-box` : `result-box off`}>
       {isLoading ? (
         <p className="loading">Loading...</p>
       ) : amount === 0 || amount === "" ? (
-        ""
+        `From ${from} to ${to}`
       ) : (
         <p className="">
-          {amount} {from} is equal {""}
+          {amount} {from} is equal{" "}
           <span className="blue-wrapper">
             {output} {to}
           </span>

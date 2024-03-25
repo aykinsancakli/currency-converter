@@ -20,7 +20,10 @@ body {
   background-color: rgba(255, 255, 255, 0.85);
   max-width: 40rem;
   margin: 6rem auto;
-  border-radius: 18px;
+  border-top-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 18px;
+  border-bottom-left-radius: 18px;
   padding: 3.2rem;
   overflow: hidden;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
@@ -113,8 +116,10 @@ body {
   border-radius: 9px;
   text-align: center;
   opacity: 1;
+}
 
-  animation: blurIn 0.15s ease-in-out;
+.off {
+  background-color: #999;
 }
 
 .blue-wrapper {
@@ -127,13 +132,13 @@ body {
   transform: skew(10deg);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 
-  transition: all 0.2s;
+  animation: blurIn 0.1s ease-in-out;
 }
 
 @keyframes blurIn {
   0% {
-    opacity: 0.4;
-    transform: scale(0.2);
+    opacity: 0.3;
+    transform: scale(0.98);
     filter: brightness(0.5);
   }
   100% {
